@@ -10,6 +10,6 @@
     reclaim_policy: "{{ openshift_storageclass_reclaim_policy | default(omit, True) }}"
   run_once: true
 
-- when: openshift_cloudprovider_kind == 'azure'
+- when: openshift_cloudprovider_kind is defined and openshift_cloudprovider_kind == 'azure'
   include_tasks: azure.yml
   run_once: true
